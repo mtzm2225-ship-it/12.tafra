@@ -1,14 +1,16 @@
-
-/* ==================== 1. التنسيقات العامة (Light Theme with Brand Background) ==================== */
+/* ==================== 1. التنسيقات العامة ==================== */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Inter', Arial, sans-serif;
-    /* ضع مسار صورة البراند الخاصة بك هنا بدلاً من hero-bg.jpg أو اسم الصورة لديك */
     background: linear-gradient(rgba(250, 248, 245, 0.9), rgba(240, 235, 225, 0.92)), 
                 url('tafra.img/WhatsApp Image 2026-09-14 at 2.48.43 PM (2).jpeg') center/cover no-repeat;
     background-attachment: fixed;
@@ -18,30 +20,95 @@ body {
     min-height: 100vh;
 }
 
-body > * {
+/* ==================== 2. Preloader ==================== */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #0f0f0f;
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+#preloader.loaded {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.logo-wrapper {
+    width: 110px;
+    height: 110px;
+    margin-bottom: 20px;
+    animation: fadeInPulse 2s infinite ease-in-out;
+}
+
+.tafra-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.brand-text .letters {
+    color: #ffffff;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+}
+
+.brand-text .tagline {
+    color: #d4af37;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.loading-line {
+    width: 60px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-top: 25px;
     position: relative;
-    z-index: 1;
+    overflow: hidden;
 }
 
-.hidden {
-    display: none !important;
+.loading-line::after {
+    content: '';
+    position: absolute;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+    animation: lineSlide 1.5s infinite ease-in-out;
 }
 
-/* ==================== 2. الهيدر وشريط التنقل (Header & Navigation) ==================== */
+/* ==================== 3. Header ==================== */
 .header {
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 14px 30px;
     border: 1px solid rgba(212, 175, 55, 0.3);
     position: sticky;
-    top: 0;
+    top: 12px;
     z-index: 1000;
     border-radius: 30px;
-    margin: 12px 20px 0;
+    margin: 0 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
 }
@@ -63,30 +130,24 @@ body > * {
     object-fit: cover;
     border-radius: 50%;
     border: 2px solid #d4af37;
-    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
 }
 
-.logo-container .logo-text {
-    color: #1a1a1a;
+.logo-text {
     font-size: 1.3rem;
     font-weight: 800;
-    text-decoration: none;
     letter-spacing: 1px;
 }
 
 .nav-links {
     display: flex;
-    align-items: center;
     gap: 20px;
 }
 
 .nav-links a {
     color: #444444;
     text-decoration: none;
-    position: relative;
     padding: 6px 12px;
     font-weight: 500;
-    font-size: 0.95rem;
     border-radius: 10px;
     transition: all 0.3s ease;
 }
@@ -97,24 +158,6 @@ body > * {
     background: rgba(212, 175, 55, 0.1);
 }
 
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    left: 12px;
-    right: 12px;
-    bottom: 2px;
-    height: 2px;
-    background-color: #d4af37;
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
-}
-
-.nav-links a:hover::after,
-.nav-links a.active::after {
-    transform: scaleX(1);
-}
-
-/* ==================== 3. شريط البحث (Search Box) ==================== */
 .search-box {
     display: flex;
     align-items: center;
@@ -122,31 +165,19 @@ body > * {
     border: 1px solid rgba(212, 175, 55, 0.4);
     border-radius: 20px;
     padding: 4px 12px;
-    transition: all 0.3s ease;
-}
-
-.search-box:focus-within {
-    border-color: #d4af37;
-    background: #ffffff;
-    box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
 }
 
 .search-input {
     background: transparent;
     border: none;
     outline: none;
-    color: #1a1a1a;
     font-size: 0.85rem;
-    width: 120px;
+    width: 100px;
     transition: width 0.3s ease;
 }
 
 .search-input:focus {
-    width: 160px;
-}
-
-.search-input::placeholder {
-    color: #888888;
+    width: 140px;
 }
 
 .search-btn {
@@ -154,13 +185,8 @@ body > * {
     border: none;
     color: #b89728;
     cursor: pointer;
-    padding: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
-/* ==================== 4. زر تسجيل الدخول (Sign In Button) ==================== */
 .signin-btn {
     padding: 9px 22px;
     border: 1.5px solid #d4af37;
@@ -168,25 +194,79 @@ body > * {
     color: #ffffff;
     border-radius: 10px;
     cursor: pointer;
-    font-size: 0.9rem;
     font-weight: 600;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
 }
 
 .signin-btn:hover {
     background: #b89728;
-    border-color: #b89728;
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(212, 175, 55, 0.4);
 }
 
+/* ==================== 4. Hero Section ==================== */
+.hero-section {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px;
+}
 
+.hero-tagline {
+    color: #d4af37;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    background: rgba(212, 175, 55, 0.1);
+    padding: 6px 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
 
+.hero-title {
+    font-size: 3rem;
+    font-weight: 900;
+    margin: 20px 0;
+}
 
+.hero-description {
+    font-size: 1.1rem;
+    color: #555;
+    max-width: 600px;
+    margin: 0 auto 30px;
+}
 
+.hero-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
 
-/* ==================== 6. معرض الصور والـ Lookbook (Collections Showcase) ==================== */
+.cta-btn {
+    padding: 12px 30px;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.cta-btn.primary {
+    background: #d4af37;
+    color: #fff;
+}
+
+.cta-btn.secondary {
+    background: rgba(255, 255, 255, 0.8);
+    color: #1a1a1a;
+    border: 1px solid #ccc;
+}
+
+.cta-btn:hover {
+    transform: translateY(-3px);
+}
+
+/* ==================== 5. Gallery Section ==================== */
 .gallery-section {
     padding: 60px 5%;
     max-width: 1300px;
@@ -196,19 +276,6 @@ body > * {
 .gallery-header {
     text-align: center;
     margin-bottom: 40px;
-}
-
-.gallery-header h2 {
-    font-size: 2.2rem;
-    font-weight: 800;
-    color: #1a1a1a;
-    margin-bottom: 10px;
-    letter-spacing: 0.5px;
-}
-
-.gallery-header p {
-    color: #666666;
-    font-size: 1rem;
 }
 
 .gallery-grid {
@@ -222,10 +289,7 @@ body > * {
     height: 400px;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
     border: 1px solid rgba(212, 175, 55, 0.3);
-    background: #ffffff;
-    transition: all 0.4s ease;
 }
 
 .gallery-card img {
@@ -242,7 +306,7 @@ body > * {
 .gallery-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1) 60%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent 60%);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -256,16 +320,153 @@ body > * {
 }
 
 .gallery-title {
-    color: #ffffff;
+    color: #fff;
     font-size: 1.25rem;
-    font-weight: 700;
-    margin-bottom: 5px;
 }
 
 .gallery-category {
     color: #d4af37;
     font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+}
+
+/* ==================== 6. About Section ==================== */
+.about-section {
+    padding: 60px 5%;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 30px;
+    padding: 40px;
+    border: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.about-image-wrapper {
+    border-radius: 20px;
+    overflow: hidden;
+    max-height: 380px;
+}
+
+.about-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ==================== 7. Style Guide ==================== */
+.style-guide-section {
+    padding: 60px 5%;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.style-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.style-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.style-card:hover {
+    transform: translateY(-6px);
+}
+
+.style-icon {
+    font-size: 2.2rem;
+    color: #d4af37;
+    margin-bottom: 15px;
+}
+
+/* ==================== 8. Footer ==================== */
+.footer-section {
+    background: #0f0f0f;
+    color: #fff;
+    padding: 60px 5% 20px;
+    margin-top: 60px;
+    border-top: 2px solid #d4af37;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+}
+
+.footer-slogan {
+    color: #d4af37;
+    font-size: 0.8rem;
+    margin-top: 8px;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links a {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #d4af37;
+}
+
+.social-icons {
+    display: flex;
+    gap: 12px;
+}
+
+.social-icons a {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    margin-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #888;
+    font-size: 0.85rem;
+}
+
+/* Keyframes */
+@keyframes fadeInPulse {
+    0%, 100% { transform: scale(0.98); opacity: 0.85; }
+    50% { transform: scale(1.03); opacity: 1; }
+}
+
+@keyframes lineSlide {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+@media (max-width: 768px) {
+    .header { flex-direction: column; gap: 12px; }
+    .about-container { grid-template-columns: 1fr; }
+    .hero-title { font-size: 2rem; }
 }

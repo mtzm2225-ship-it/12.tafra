@@ -1,101 +1,186 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TAFRA</title>
+    <title>TAFRA | WEAR YOUR CONFIDENCE</title>
 
     <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="2.css"/>
+    <!-- Stylesheet & Script -->
+    <link rel="stylesheet" href="2.css">
+    <script src="2.js" defer></script>
 </head>
+
 <body>
 
-    <!-- شريط التنقل العلوي -->
-    <div class="top-bar">
-        <div class="top-bar-inner"></div>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="logo-wrapper">
+                <img src="tafra.img/tafara.15489798.jpeg" alt="TAFRA Logo" class="tafra-logo">
+            </div>
+            <div class="brand-text">
+                <span class="letters">TAFRA</span>
+                <span class="tagline">WEAR YOUR CONFIDENCE</span>
+            </div>
+            <div class="loading-line"></div>
+        </div>
     </div>
 
-    <!-- رأس الموقع (Header) -->
-    <header class="header"> 
+    <!-- Header & Navigation -->
+    <header class="header">
         <div class="logo-container">
             <img src="tafra.img/tafara.15489798.jpeg" alt="TAFRA Logo">
             <span class="logo-text">TAFRA</span>
         </div>
 
         <nav class="nav-links">
-            <a href="#home" class="active" data-i18n="home">Home</a>
-            <a href="#about" data-i18n="about">Collections</a>
-            <a href="#portfolio" data-i18n="portfolio">About Us</a>
-            <a href="#Style Guid" data-i18n="Style Guid">Style Guide</a>
-            <a href="#contact" data-i18n="contact">Contact</a>
+            <a href="#home" class="active">الرئيسية</a>
+            <a href="#about">المجموعات</a>
+            <a href="#portfolio">قصتنا</a>
+            <a href="#style-guide">دليل الأناقة</a>
+            <a href="#contact">التواصل</a>
         </nav>
 
         <div style="display: flex; align-items: center; gap: 15px;">
-            <!-- مربع البحث -->
             <div class="search-box">
-                <input type="text" placeholder="Search..." class="search-input" data-i18n-placeholder="search">
+                <input type="text" placeholder="بحث..." class="search-input">
                 <button class="search-btn" aria-label="Search">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
             </div>
-            <!-- زر تسجيل الدخول -->
-            <button class="signin-btn" type="button" data-i18n="signin">Sign In</button>
+            <button class="signin-btn" type="button">تسوق الآن</button>
         </div>
     </header>
 
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="hero-content">
+            <span class="hero-tagline">WEAR YOUR CONFIDENCE</span>
+            <h1 class="hero-title">TAFRA LUXURY COLLECTION</h1>
+            <p class="hero-description">
+                اكتشف الفخامة في أنقى صورها. تشكيلة مميزة تمنحك إطلالة فريدة وتعكس ثقتك بنفسك في كل لحظة.
+            </p>
+            <div class="hero-actions">
+                <a href="#about" class="cta-btn primary">استكشف المجموعة</a>
+                <a href="#portfolio" class="cta-btn secondary">عن البراند</a>
+            </div>
+        </div>
+    </section>
 
-    <section class="gallery-section">
-    <div class="gallery-header">
-        <h2 data-i18n="lookbook-title">TAFRA Lookbook</h2>
-        <p data-i18n="lookbook-subtitle">استكشف أحدث تصميماتنا وأزياءنا الحصرية</p>
-    </div>
-    
-    <div class="gallery-grid">
-        <!-- صورة 1 -->
-        <div class="gallery-card">
-            <img src="tafra.img/tafra584894.6478978559849654984.jpeg" alt="TAFRA Outfit 1">
-            <div class="gallery-overlay">
-                <span class="gallery-category">Oversized Collection</span>
-                <h3 class="gallery-title">Signature Streetwear</h3>
+    <!-- Gallery / Lookbook -->
+    <section class="gallery-section" id="about">
+        <div class="gallery-header">
+            <h2>TAFRA Lookbook</h2>
+            <p>استكشف أحدث تصميماتنا وأزياءنا الحصرية</p>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-card">
+                <img src="tafra.img/tafra584894.6478978565494.jpeg" alt="TAFRA Outfit 1">
+                <div class="gallery-overlay">
+                    <span class="gallery-category">Oversized Collection</span>
+                    <h3 class="gallery-title">Signature Streetwear</h3>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <img src="tafra.img/tafra584894.6478978597498465498.jpeg" alt="TAFRA Outfit 2">
+                <div class="gallery-overlay">
+                    <span class="gallery-category">Classic Edition</span>
+                    <h3 class="gallery-title">Minimalist Style</h3>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <img src="tafra.img/tafra584894.6478978549849.jpeg" alt="TAFRA Outfit 3">
+                <div class="gallery-overlay">
+                    <span class="gallery-category">New Arrival</span>
+                    <h3 class="gallery-title">Luxury Winter Wear</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="portfolio">
+        <div class="about-container">
+            <div class="about-text">
+                <span class="section-kicker">OUR STORY</span>
+                <h2>صُنعت لتميزك</h2>
+                <p>
+                    تأسست براند TAFRA لتقديم تجربة أزياء استثنائية تجمع بين العصرية والجودة العالية. نحن نؤمن بأن ملابسك ليست مجرد مظهر، بل هي التعبير الحقيقي عن ثقتك وتفردك.
+                </p>
+            </div>
+            <div class="about-image-wrapper">
+                <img src="tafra.img/tafra584894.6478978565494.jpeg" alt="TAFRA Brand Story" class="about-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Style Guide Section -->
+    <section class="style-guide-section" id="style-guide">
+        <div class="section-header">
+            <h2>دليل الأناقة</h2>
+            <p>استراتيجيات تنسيق الأزياء لإطلالة متناسقة واحترافية</p>
+        </div>
+        <div class="style-grid">
+            <div class="style-card">
+                <i class="fa-solid fa-shirt style-icon"></i>
+                <h3>Oversized Fit</h3>
+                <p>تنسيق القطع المريحة مع البنطال الواسع لإطلالة عصرية يومية.</p>
+            </div>
+            <div class="style-card">
+                <i class="fa-solid fa-layer-group style-icon"></i>
+                <h3>Layering Master</h3>
+                <p>دمج الطبقات المتعددة لإبراز تفاصيل التصميم وقوة المظهر.</p>
+            </div>
+            <div class="style-card">
+                <i class="fa-solid fa-gem style-icon"></i>
+                <h3>Minimal Details</h3>
+                <p>الاعتماد على البساطة والجودة للتعبير عن الأناقة الراقية.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer-section" id="contact">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="logo-container">
+                    <img src="tafra.img/tafara.15489798.jpeg" alt="TAFRA Logo">
+                    <span class="logo-text">TAFRA</span>
+                </div>
+                <p class="footer-slogan">WEAR YOUR CONFIDENCE</p>
+            </div>
+
+            <div class="footer-links">
+                <h4>روابط سريعة</h4>
+                <ul>
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#about">المجموعات</a></li>
+                    <li><a href="#style-guide">دليل الأناقة</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-social">
+                <h4>تابعنا</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
             </div>
         </div>
 
-        <!-- صورة 2 -->
-        <div class="gallery-card">
-            <img src="tafra.img/tafra584894.6478978597498465498.jpeg" alt="TAFRA Outfit 2">
-            <div class="gallery-overlay">
-                <span class="gallery-category">Classic Edition</span>
-                <h3 class="gallery-title">Minimalist Style</h3>
-            </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 TAFRA Clothing Brand. جميع الحقوق محفوظة.</p>
         </div>
-
-        <!-- صورة 3 -->
-        <div class="gallery-card">
-            <img src="tafra.img/tafra584894.6478978549849.jpeg" alt="TAFRA Outfit 3">
-            <div class="gallery-overlay">
-                <span class="gallery-category">New Arrival</span>
-                <h3 class="gallery-title">Luxury Winter Wear</h3>
-            </div>
-        </div>
-    </div>
-</section>
-
+    </footer>
 
 </body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
 </html>
