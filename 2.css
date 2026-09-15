@@ -95,7 +95,23 @@ body {
     animation: lineSlide 1.5s infinite ease-in-out;
 }
 
-/* ==================== 3. Header ==================== */
+/* ==================== 3. Announcement Bar ==================== */
+.announcement-bar {
+    background: #d4af37;
+    color: #0f0f0f;
+    text-align: center;
+    padding: 8px 15px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.announcement-bar span {
+    text-decoration: underline;
+    text-transform: uppercase;
+}
+
+/* ==================== 4. Header ==================== */
 .header {
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(14px);
@@ -108,7 +124,7 @@ body {
     top: 12px;
     z-index: 1000;
     border-radius: 30px;
-    margin: 0 20px;
+    margin: 10px 20px 0;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
 }
@@ -203,7 +219,7 @@ body {
     transform: translateY(-2px);
 }
 
-/* ==================== 4. Hero Section ==================== */
+/* ==================== 5. Hero Section ==================== */
 .hero-section {
     min-height: 80vh;
     display: flex;
@@ -266,7 +282,7 @@ body {
     transform: translateY(-3px);
 }
 
-/* ==================== 5. Gallery Section ==================== */
+/* ==================== 6. Gallery & Product Card Actions ==================== */
 .gallery-section {
     padding: 60px 5%;
     max-width: 1300px;
@@ -303,6 +319,41 @@ body {
     transform: scale(1.08);
 }
 
+.card-actions {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+}
+
+.gallery-card:hover .card-actions {
+    opacity: 1;
+}
+
+.action-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.9);
+    color: #1a1a1a;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-btn:hover {
+    background: #d4af37;
+    color: #fff;
+}
+
 .gallery-overlay {
     position: absolute;
     inset: 0;
@@ -329,7 +380,7 @@ body {
     font-size: 0.85rem;
 }
 
-/* ==================== 6. About Section ==================== */
+/* ==================== 7. About Section ==================== */
 .about-section {
     padding: 60px 5%;
     max-width: 1300px;
@@ -359,7 +410,7 @@ body {
     object-fit: cover;
 }
 
-/* ==================== 7. Style Guide ==================== */
+/* ==================== 8. Style Guide ==================== */
 .style-guide-section {
     padding: 60px 5%;
     max-width: 1300px;
@@ -392,7 +443,7 @@ body {
     margin-bottom: 15px;
 }
 
-/* ==================== 8. Footer ==================== */
+/* ==================== 9. Footer ==================== */
 .footer-section {
     background: #0f0f0f;
     color: #fff;
@@ -445,6 +496,11 @@ body {
     text-decoration: none;
 }
 
+.social-icons a:hover {
+    background: #d4af37;
+    color: #0f0f0f;
+}
+
 .footer-bottom {
     text-align: center;
     padding-top: 20px;
@@ -454,7 +510,58 @@ body {
     font-size: 0.85rem;
 }
 
-/* Keyframes */
+/* ==================== 10. Floating Widgets (WhatsApp & Back to Top) ==================== */
+.whatsapp-float {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 55px;
+    height: 55px;
+    background-color: #25d366;
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+    z-index: 999;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1) rotate(10deg);
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    width: 45px;
+    height: 45px;
+    background: rgba(15, 15, 15, 0.8);
+    border: 1px solid #d4af37;
+    color: #d4af37;
+    border-radius: 12px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 998;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #d4af37;
+    color: #0f0f0f;
+}
+
+/* Animations & Responsive */
 @keyframes fadeInPulse {
     0%, 100% { transform: scale(0.98); opacity: 0.85; }
     50% { transform: scale(1.03); opacity: 1; }

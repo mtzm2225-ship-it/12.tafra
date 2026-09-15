@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. إخفاء الـ Preloader بعد التحيمل
+    // 1. إخفاء الـ Preloader بعد التحميل
     const preloader = document.getElementById('preloader');
     if (preloader) {
         window.addEventListener('load', () => {
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 4. زر البحث
+    // 4. البحث
     const searchInput = document.querySelector('.search-input');
     const searchBtn = document.querySelector('.search-btn');
 
@@ -62,10 +62,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const signinBtn = document.querySelector('.signin-btn');
     if (signinBtn) {
         signinBtn.addEventListener('click', () => {
-            const contactSection = document.سgetElementById('contact');
+            const contactSection = document.getElementById('contact');
             if (contactSection) {
                 contactSection.scrollIntoView({ behavior: 'smooth' });
             }
+        });
+    }
+
+    // 6. زر العودة للأعلى (Back to Top)
+    const backToTopBtn = document.getElementById('backToTop');
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
 });
