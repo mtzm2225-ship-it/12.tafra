@@ -759,3 +759,54 @@ body {
         letter-spacing: 4px;
     }
 }
+
+
+
+
+.loader-content {
+    display: flex;
+    flex-direction: row; /* تجعل اللوجو والنص على صف واحد */
+    align-items: center;
+    justify-content: center;
+    gap: 15px; /* مسافة أنيقة بين اللوجو والنص */
+}
+
+.logo-wrapper {
+    width: 50px; /* تصغير حجم اللوجو ليتناسب مع الصف */
+    height: 50px;
+    margin-bottom: 0; /* إلغاء الهامش السفلي */
+    animation: pulse 2s infinite ease-in-out;
+}
+
+.brand-text .letters {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    display: inline-block;
+}
+
+.brand-text .tagline {
+    color: #00d2ff;
+    font-size: 11px;
+    letter-spacing: 1px;
+    display: block;
+    margin-top: 2px;
+}
+
+
+/* الحاوية التي تجمع اللوجو مع النص */
+.loader-content {
+    display: flex;
+    flex-direction: row; /* لعرض العناصر أفقياً */
+    align-items: center; /* لمحاذاة العناصر عمودياً في المنتصف */
+    justify-content: center; /* لتوسيط المحتوى */
+    gap: 15px; /* مسافة بين اللوجو والنص */
+}
+
+/* في حال كان النص داخل loader-status */
+.loader-status {
+    display: flex;
+    align-items: center;
+    white-space: nowrap; /* لمنع الكلمة من النزول لسطر جديد */
+}
