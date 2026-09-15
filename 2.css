@@ -20,37 +20,42 @@ body {
     min-height: 100vh;
 }
 
-/* ==================== 2. Preloader ==================== */
+/* ==================== 2. Preloader (Dark & Gold) ==================== */
 #preloader {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: #0f0f0f;
+    background-color: #0d0d0d;
     z-index: 99999;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: opacity 0.6s ease, visibility 0.6s ease;
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s ease;
 }
 
 #preloader.loaded {
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
 }
 
 .loader-content {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    text-align: center;
+    justify-content: center;
+    gap: 15px;
 }
 
 .logo-wrapper {
-    width: 110px;
-    height: 110px;
-    margin-bottom: 20px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #d4af37;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
     animation: fadeInPulse 2s infinite ease-in-out;
 }
 
@@ -58,29 +63,38 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 50%;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
 }
 
 .brand-text .letters {
     color: #ffffff;
-    font-size: 26px;
-    font-weight: 700;
-    letter-spacing: 6px;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 4px;
     text-transform: uppercase;
 }
 
+/* تم تعديل اللون هنا إلى الذهبي */
 .brand-text .tagline {
     color: #d4af37;
     font-size: 11px;
-    letter-spacing: 3px;
+    font-weight: 700;
+    letter-spacing: 2px;
     text-transform: uppercase;
+    margin-top: 2px;
+    text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
 }
 
 .loading-line {
     width: 60px;
     height: 2px;
     background: rgba(255, 255, 255, 0.1);
-    margin-top: 25px;
+    margin-top: 15px;
     position: relative;
     overflow: hidden;
 }
@@ -510,7 +524,7 @@ body {
     font-size: 0.85rem;
 }
 
-/* ==================== 10. Floating Widgets (WhatsApp & Back to Top) ==================== */
+/* ==================== 10. Floating Widgets ==================== */
 .whatsapp-float {
     position: fixed;
     bottom: 25px;
@@ -561,7 +575,7 @@ body {
     color: #0f0f0f;
 }
 
-/* Animations & Responsive */
+/* Animations */
 @keyframes fadeInPulse {
     0%, 100% { transform: scale(0.98); opacity: 0.85; }
     50% { transform: scale(1.03); opacity: 1; }
@@ -572,241 +586,39 @@ body {
     100% { left: 100%; }
 }
 
+/* ==================== Responsive ==================== */
 @media (max-width: 768px) {
-    .header { flex-direction: column; gap: 12px; }
-    .about-container { grid-template-columns: 1fr; }
-    .hero-title { font-size: 2rem; }
+    .announcement-bar { font-size: 0.75rem; padding: 6px 10px; }
+    .header { flex-direction: column; gap: 12px; margin: 10px; padding: 12px 15px; border-radius: 18px; }
+    .nav-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; width: 100%; }
+    .nav-links a { font-size: 0.85rem; padding: 5px 8px; }
+    .search-box { width: 100%; max-width: 180px; }
+    .search-input { width: 100% !important; }
+    .hero-section { min-height: auto; padding: 40px 15px; }
+    .hero-title { font-size: 1.8rem; line-height: 1.3; }
+    .hero-description { font-size: 0.95rem; }
+    .hero-actions { flex-direction: column; gap: 10px; width: 100%; }
+    .cta-btn { width: 100%; text-align: center; padding: 10px 15px; }
+    .gallery-section { padding: 40px 15px; }
+    .gallery-grid { grid-template-columns: 1fr; gap: 20px; }
+    .gallery-card { height: 350px; }
+    .card-actions { opacity: 1; top: 10px; right: 10px; }
+    .gallery-overlay { opacity: 1; background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent 70%); }
+    .about-section { padding: 30px 15px; }
+    .about-container { grid-template-columns: 1fr; padding: 20px; gap: 20px; text-align: center; }
+    .about-image-wrapper { max-height: 250px; }
+    .style-guide-section { padding: 30px 15px; }
+    .style-grid { grid-template-columns: 1fr; gap: 15px; }
+    .footer-section { padding: 40px 20px 20px; text-align: center; }
+    .footer-container { grid-template-columns: 1fr; gap: 25px; }
+    .logo-container { justify-content: center; }
+    .social-icons { justify-content: center; }
+    .whatsapp-float { width: 48px; height: 48px; font-size: 1.5rem; bottom: 15px; right: 15px; }
+    .back-to-top { width: 40px; height: 40px; bottom: 15px; left: 15px; }
 }
-
-
-
-
-/* ========================================== */
-/* تنسيقات الشاشات المتوسطة والصغيرة (الموبايل والتابلت) */
-/* ========================================== */
-
-@media (max-width: 768px) {
-
-    /* --- 1. شريط العروض العلوي --- */
-    .announcement-bar {
-        font-size: 0.75rem;
-        padding: 6px 10px;
-    }
-
-    /* --- 2. الهيدر والقائمة العلوية --- */
-    .header {
-        flex-direction: column;
-        gap: 12px;
-        margin: 10px;
-        padding: 12px 15px;
-        border-radius: 18px;
-    }
-
-    .nav-links {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 8px;
-        width: 100%;
-    }
-
-    .nav-links a {
-        font-size: 0.85rem;
-        padding: 5px 8px;
-    }
-
-    /* مربع البحث على الموبايل */
-    .search-box {
-        width: 100%;
-        max-width: 180px;
-    }
-
-    .search-input {
-        width: 100% !important;
-    }
-
-    /* --- 3. القسم الرئيسي (Hero Section) --- */
-    .hero-section {
-        min-height: auto;
-        padding: 40px 15px;
-    }
-
-    .hero-title {
-        font-size: 1.8rem;
-        line-height: 1.3;
-    }
-
-    .hero-description {
-        font-size: 0.95rem;
-    }
-
-    .hero-actions {
-        flex-direction: column;
-        gap: 10px;
-        width: 100%;
-    }
-
-    .cta-btn {
-        width: 100%;
-        text-align: center;
-        padding: 10px 15px;
-    }
-
-    /* --- 4. معرض الصور والمنتجات (Gallery) --- */
-    .gallery-section {
-        padding: 40px 15px;
-    }
-
-    .gallery-grid {
-        grid-template-columns: 1fr; /* عرض كارت واحد في الصف */
-        gap: 20px;
-    }
-
-    .gallery-card {
-        height: 350px; /* ضبط ارتفاع الكارت للموبايل */
-    }
-
-    /* إظهار أزرار المفضلة والسلة دائماً على الموبايل بدون نُقر */
-    .card-actions {
-        opacity: 1;
-        top: 10px;
-        right: 10px;
-    }
-
-    /* إظهار تفاصيل المنتج دائماً على الموبايل */
-    .gallery-overlay {
-        opacity: 1;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent 70%);
-    }
-
-    /* --- 5. قسم قصة البراند (About) --- */
-    .about-section {
-        padding: 30px 15px;
-    }
-
-    .about-container {
-        grid-template-columns: 1fr;
-        padding: 20px;
-        gap: 20px;
-        text-align: center;
-    }
-
-    .about-image-wrapper {
-        max-height: 250px;
-    }
-
-    /* --- 6. دليل الأناقة (Style Guide) --- */
-    .style-guide-section {
-        padding: 30px 15px;
-    }
-
-    .style-grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-
-    /* --- 7. الفوتر الأخير (Footer) --- */
-    .footer-section {
-        padding: 40px 20px 20px;
-        text-align: center;
-    }
-
-    .footer-container {
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-
-    .logo-container {
-        justify-content: center;
-    }
-
-    .social-icons {
-        justify-content: center;
-    }
-
-    /* --- 8. الأزرار العائمة (WhatsApp & Back To Top) --- */
-    .whatsapp-float {
-        width: 48px;
-        height: 48px;
-        font-size: 1.5rem;
-        bottom: 15px;
-        right: 15px;
-    }
-
-    .back-to-top {
-        width: 40px;
-        height: 40px;
-        bottom: 15px;
-        left: 15px;
-    }
-}
-
-/* ========================================== */
-/* تنسيقات الهواتف الصغيرة جداً (أقل من 480px) */
-/* ========================================== */
 
 @media (max-width: 480px) {
-    .hero-title {
-        font-size: 1.5rem;
-    }
-
-    .logo-text {
-        font-size: 1.1rem;
-    }
-
-    .brand-text .letters {
-        font-size: 20px;
-        letter-spacing: 4px;
-    }
-}
-
-
-
-
-.loader-content {
-    display: flex;
-    flex-direction: row; /* تجعل اللوجو والنص على صف واحد */
-    align-items: center;
-    justify-content: center;
-    gap: 15px; /* مسافة أنيقة بين اللوجو والنص */
-}
-
-.logo-wrapper {
-    width: 50px; /* تصغير حجم اللوجو ليتناسب مع الصف */
-    height: 50px;
-    margin-bottom: 0; /* إلغاء الهامش السفلي */
-    animation: pulse 2s infinite ease-in-out;
-}
-
-.brand-text .letters {
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    display: inline-block;
-}
-
-.brand-text .tagline {
-    color: #00d2ff;
-    font-size: 11px;
-    letter-spacing: 1px;
-    display: block;
-    margin-top: 2px;
-}
-
-
-/* الحاوية التي تجمع اللوجو مع النص */
-.loader-content {
-    display: flex;
-    flex-direction: row; /* لعرض العناصر أفقياً */
-    align-items: center; /* لمحاذاة العناصر عمودياً في المنتصف */
-    justify-content: center; /* لتوسيط المحتوى */
-    gap: 15px; /* مسافة بين اللوجو والنص */
-}
-
-/* في حال كان النص داخل loader-status */
-.loader-status {
-    display: flex;
-    align-items: center;
-    white-space: nowrap; /* لمنع الكلمة من النزول لسطر جديد */
+    .hero-title { font-size: 1.5rem; }
+    .logo-text { font-size: 1.1rem; }
+    .brand-text .letters { font-size: 18px; letter-spacing: 3px; }
 }
