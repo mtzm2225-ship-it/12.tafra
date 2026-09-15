@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const signinBtn = document.querySelector('.signin-btn');
     if (signinBtn) {
         signinBtn.addEventListener('click', () => {
-            const contactSection = document.getElementById('contact');
+            const contactSection = document.سgetElementById('contact');
             if (contactSection) {
                 contactSection.scrollIntoView({ behavior: 'smooth' });
             }
